@@ -15,13 +15,13 @@ import "fmt"
 // 输入一组查询单词，输出其中可扩张的单词数量。
 
 func expressiveWords(s string, words []string) int {
-
+	return 0
 }
 
 func test01() {
-	fmt.Println("minOperations:", minOperations("0100"))
-	fmt.Println("minOperations:", minOperations("10"))
-	fmt.Println("minOperations:", minOperations("1111"))
+	fmt.Println("expressiveWords:", expressiveWords("0100"))
+	fmt.Println("expressiveWords:", expressiveWords("10"))
+	fmt.Println("expressiveWords:", expressiveWords("1111"))
 	fmt.Println("exit test01")
 }
 
