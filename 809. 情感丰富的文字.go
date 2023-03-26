@@ -14,14 +14,48 @@ import "fmt"
 // 如果 s = "helllllooo"，那么查询词 "hello" 是可扩张的，因为可以对它执行这两种扩张操作使得 query = "hello" -> "hellooo" -> "helllllooo" = s。
 // 输入一组查询单词，输出其中可扩张的单词数量。
 
+// 时间复杂度：O(n∣s∣+∑i∣wordsi|)，其中 n 是数组 words 的长度，∣s∣ 和 wordsi 分别是字符串 s 和数组 words 中第 i 个字符串的长度。
+// 空间复杂度：O(1)。
+func expend(s, word string) bool {
+	m, n := len(s), len(word)
+	i, j := 0, 0
+
+	for i < m && j < n {
+		if s[i] != word[j] {
+			return false
+		}
+		ci := s[i]
+		var cnti, cntj int
+		for i < m && s[i] == ci {
+			cnti++
+			i++
+		}
+		for j < n && word[j] == ci {
+			cntj++
+			j++
+		}
+		if cnti < cntj || cnti > cntj && cnti < 3 {
+			return false
+		}
+	}
+
+	return i == m && j == n
+}
+
 func expressiveWords(s string, words []string) int {
-	return 0
+	var cnt int
+	for _, word := range words {
+		fmt.Println(word)
+		if expend(s, word) {
+			fmt.Println(true)
+			cnt++
+		}
+	}
+	return cnt
 }
 
 func test01() {
-	fmt.Println("expressiveWords:", expressiveWords("0100"))
-	fmt.Println("expressiveWords:", expressiveWords("10"))
-	fmt.Println("expressiveWords:", expressiveWords("1111"))
+	fmt.Println("expressiveWords:", expressiveWords("heeellooo", []string{"hello", "hi", "helo"}))
 	fmt.Println("exit test01")
 }
 
