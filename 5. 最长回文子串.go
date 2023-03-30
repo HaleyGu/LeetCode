@@ -8,6 +8,10 @@ import "fmt"
 // 给你一个字符串 s，找到 s 中最长的回文子串。
 // 如果字符串的反序与原始字符串相同，则该字符串称为回文字符串。
 
+// 中心扩展算法
+// 时间复杂度：O(n2)，其中 n 是字符串的长度。
+// 长度为 1 和 2 的回文中心分别有 n 和 n−1 个，每个回文中心最多会向外扩展 O(n) 次。
+// 空间复杂度：O(1)。
 func longestPalindrome(s string) string {
 	var sLen = len(s)
 	var index int
