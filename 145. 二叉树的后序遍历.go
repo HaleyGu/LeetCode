@@ -95,8 +95,8 @@ func buildBinaryTree(arr []int) *TreeNode {
 				temp = append(temp, queue[i].Right)
 			}
 			index++
-			queue = temp
 		}
+		queue = temp
 	}
 	return tree
 }
